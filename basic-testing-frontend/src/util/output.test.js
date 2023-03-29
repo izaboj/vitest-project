@@ -20,12 +20,19 @@ describe("prepareResultText()", () => {
     const textResult = prepareResultText(result);
 
     expect(textResult).toMatch(/Result: 3/);
+    expect(textResult).toContain(result.toString());
   });
   it("should return text with text Invalid input...", () => {
     const result = "invalid";
     const textResult = prepareResultText(result);
 
     expect(textResult).toMatch(/Invalid input/);
+  });
+  it("should return empty string for 'no-calc' input ", () => {
+    const result = "no-calc";
+    const textResult = prepareResultText(result);
+
+    expect(textResult).toBe("");
   });
 });
 // describe("outputResult()", () => {});

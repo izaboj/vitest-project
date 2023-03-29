@@ -25,19 +25,18 @@ it("should return NaN when not-transormable value is passed", () => {
   expect(result).toBeNaN();
 });
 
-// describe("cleanInputs()", () => {
-//   it("should return array of numbers", () => {
-//     const input = [1, 2];
-//     const input2 = ["1", 2];
-//     const input3 = ["1", "2"];
+describe("cleanInputs()", () => {
+  it("should return array of numbers", () => {
+    const input = ["1", "2"];
 
-//     const result = cleanInputs(input);
-//     const result2 = cleanInputs(input2);
-//     const result3 = cleanInputs(input3);
+    const result = cleanInputs(input);
+    expect(result[0]).toBeTypeOf("number");
+  });
+  it("should throw error if input is invalid", () => {
+    const input = ["1", ""];
 
-//     const expected_result = [1, 2];
-//     expect(result).toBe(expected_result);
-//     expect(result2).toBe(expected_result);
-//     expect(result3).toBe(expected_result);
-//   });
-// });
+    const returnFn = () => cleanInputs(input);
+
+    expect(returnFn).toThrow();
+  });
+});
